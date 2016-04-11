@@ -9,6 +9,7 @@ import io.realm.annotations.PrimaryKey;
 public class Contacts extends RealmObject {
     @PrimaryKey
     private int id;
+
     private String name;
     private String address;
     private String phoneNumber;

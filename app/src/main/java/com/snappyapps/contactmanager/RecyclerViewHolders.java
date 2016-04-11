@@ -12,6 +12,9 @@ import com.snappyapps.contactmanager.activities.ShowContactActivity;
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView userName;
+    public TextView userAddress;
+    public TextView UserEmailAddress;
+    public TextView userPhoneNumber;
     public ImageView userPhoto;
 
     public RecyclerViewHolders(View itemView) {
@@ -19,6 +22,8 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         itemView.setOnClickListener(this);
         userName = (TextView) itemView.findViewById(R.id.userName);
         userPhoto = (ImageView) itemView.findViewById(R.id.userPhoto);
+
+
     }
 
     @Override

@@ -11,22 +11,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.snappyapps.contactmanager.R;
 import com.snappyapps.contactmanager.RecyclerViewAdapter;
 import com.snappyapps.contactmanager.models.ContactItems;
-import com.snappyapps.contactmanager.models.Contacts;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-
 public class MainActivity extends AppCompatActivity {
-    private Realm database;
     RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
 
@@ -38,11 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(toolbar);
-
-        database = Realm.getInstance(new RealmConfiguration.Builder(this)
-                .name("database.realm")
-                .build());
-
         initializeRecyclerview();
 
 
@@ -68,18 +57,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(rvAdapter);
     }
 
-    private void insertData(String name, String address, String emailAddress, String image) {
-        database.beginTransaction();
-        //create an object
-        Contacts contacts = database.createObject(Contacts.class);
-        //set the fields
-        contacts.setName(name);
-        contacts.setAddress(address);
-        contacts.setEmailAddress(emailAddress);
-        contacts.setImage(image);
-        database.commitTransaction();
-        Toast.makeText(MainActivity.this, "Object inserted successfully", Toast.LENGTH_LONG).show();
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
