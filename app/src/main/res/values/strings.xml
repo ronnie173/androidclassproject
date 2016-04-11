@@ -4,4 +4,5 @@
     <string name="user_name">italy</string>
     <string name="title_activity_add_new_contact">Add Contact</string>
     <string name="title_activity_show_contact">Show Contact</string>
+    <string name="title_activity_edit_contact">Edit Contact</string>
 </resources>
