@@ -1,4 +1,4 @@
-package com.snappyapps.contactmanager;
+package com.snappyapps.contactmanager.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.snappyapps.contactmanager.R;
+import com.snappyapps.contactmanager.RecyclerViewAdapter;
 import com.snappyapps.contactmanager.models.ContactItems;
 import com.snappyapps.contactmanager.models.Contacts;
 
