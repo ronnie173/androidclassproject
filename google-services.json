@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "default-demo-app-970c6",
+    "project_number": "219714913610",
+    "name": "Default Demo App"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219714913610:android:ed790b8209052883",
+        "client_id": "android:com.snappyapps.contactmanager",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.snappyapps.contactmanager",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219714913610-nplr22irttso88fldjdb247352gd8h31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.snappyapps.contactmanager",
+            "certificate_hash": "0CC65C4285153A45293A1B743CAEEA489FAACFA2"
+          }
+        },
+        {
+          "client_id": "219714913610-jtrg99tlealgm4458nljoovfa3h8j6ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

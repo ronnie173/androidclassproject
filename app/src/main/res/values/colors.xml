@@ -9,4 +9,7 @@
     <color name="light_blue_100">#B3E5FC</color>
     <color name="translucent">#00000000</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="purple_400">#AB47BC</color>
+    <color name="translucent_80">#60000000</color>
 </resources>

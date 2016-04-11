@@ -1,5 +1,8 @@
 package com.snappyapps.contactmanager.activities;
 
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.snappyapps.contactmanager.R;
 import com.snappyapps.contactmanager.RecyclerViewAdapter;
@@ -26,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setActionBar(toolbar);
 
         database = Realm.getInstance(new RealmConfiguration.Builder(this)
                 .name("database.realm")
@@ -45,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(view.getContext(), AddNewContactActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
     }
