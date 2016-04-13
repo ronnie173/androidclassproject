@@ -34,20 +34,22 @@ public class AddNewContactActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initializeComponents() {
-        addNewContactBtn = (Button)findViewById(R.id.addNewContactBtn);
-        nameEditText = (EditText)findViewById(R.id.nameEditText);
-        emaiEditText = (EditText)findViewById(R.id.emailEditText);
-        phoneEditText = (EditText)findViewById(R.id.phoneEditText);
-        addressEditText = (EditText)findViewById(R.id.addressEditText);
+        addNewContactBtn = (Button) findViewById(R.id.addNewContactBtn);
+        nameEditText = (EditText) findViewById(R.id.nameEditText);
+        emaiEditText = (EditText) findViewById(R.id.emailEditText);
+        phoneEditText = (EditText) findViewById(R.id.phoneEditText);
+        addressEditText = (EditText) findViewById(R.id.addressEditText);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.addNewContactBtn:
-                DatabaseHelper databaseHelper = new DatabaseHelper(ApplicationHelper.getDatabaseInstance(),view.getContext());
-                databaseHelper.insertData(nameEditText.getText().toString(),addressEditText.getText().toString(),emaiEditText.getText().toString());
+                DatabaseHelper databaseHelper = new DatabaseHelper(ApplicationHelper.getDatabaseInstance(), view.getContext());
+                databaseHelper.insertData(nameEditText.getText().toString(),
+                        addressEditText.getText().toString(),
+                        emaiEditText.getText().toString(),
+                        phoneEditText.getText().toString());
                 break;
 
         }

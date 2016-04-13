@@ -9,12 +9,15 @@ import com.snappyapps.contactmanager.models.Contacts;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by jeromeraymond on 4/11/16.
  */
 public class DatabaseHelper  {
 
+    private static final String TAG = DatabaseHelper.class.getSimpleName();
     private Realm database;
     private RealmConfiguration realmConfiguration;
     private Realm realm;
@@ -26,19 +29,38 @@ public class DatabaseHelper  {
         realm = Realm.getInstance(realmConfiguration);
     }
 
-    public void insertData(String name, String address, String emailAddress) {
-        database.beginTransaction();
-        //create an object
-        Contacts contacts = database.createObject(Contacts.class);
-        //set the fields
-        contacts.setName(name);
-        contacts.setAddress(address);
-        contacts.setEmailAddress(emailAddress);
-       // contacts.setImage(image);
-        database.commitTransaction();
+    public void insertData(final String name, final String address, final String emailAddress,final String phoneNumber) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                //create an object
+                Contacts contacts = database.createObject(Contacts.class);
+                contacts.setName(name);
+                contacts.setAddress(address);
+                contacts.setEmailAddress(emailAddress);
+                contacts.setPhoneNumber(phoneNumber);
+            }
+        });
+
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
         Log.d("", "path: " + realm.getPath());
+
+    }
+
+
+    public void queryDatabase(int position)
+    {
+        // Build the query looking at all users:
+        RealmQuery<Contacts> query = realm.where(Contacts.class);
+        query.equalTo("name","Jerome");
+        RealmResults<Contacts> results = query.findAll();
+        for (int i = 0; i < results.size(); i++) {
+            Contacts u = results.get(i);
+            Log.d(TAG,u.getAddress());
+        }
+
+
     }
 
 

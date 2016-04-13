@@ -84,22 +84,22 @@ public class MainActivity extends AppCompatActivity {
     private List<ContactItems> getAllItemList() {
 
         List<ContactItems> allItems = new ArrayList<>();
-        allItems.add(new ContactItems("United States", R.mipmap.pic1));
-        allItems.add(new ContactItems("Canada", R.mipmap.pic1));
-        allItems.add(new ContactItems("United Kingdom", R.mipmap.pic1));
-        allItems.add(new ContactItems("Germany", R.mipmap.pic1));
-        allItems.add(new ContactItems("Sweden", R.mipmap.pic1));
-        allItems.add(new ContactItems("United Kingdom", R.mipmap.pic1));
-        allItems.add(new ContactItems("Germany", R.mipmap.pic1));
-        allItems.add(new ContactItems("Sweden", R.mipmap.pic1));
-        allItems.add(new ContactItems("United States", R.mipmap.pic1));
-        allItems.add(new ContactItems("Canada", R.mipmap.pic1));
-        allItems.add(new ContactItems("United Kingdom", R.mipmap.pic1));
-        allItems.add(new ContactItems("Germany", R.mipmap.pic1));
-        allItems.add(new ContactItems("Sweden", R.mipmap.pic1));
-        allItems.add(new ContactItems("United Kingdom", R.mipmap.pic1));
-        allItems.add(new ContactItems("Germany", R.mipmap.pic1));
-        allItems.add(new ContactItems("Sweden", R.mipmap.pic1));
+        allItems.add(new ContactItems("Jerome", R.mipmap.pic1));
+        allItems.add(new ContactItems("Jack", R.mipmap.pic1));
+        allItems.add(new ContactItems("Mike", R.mipmap.pic1));
+        allItems.add(new ContactItems("Johnny", R.mipmap.pic1));
+        allItems.add(new ContactItems("Owen", R.mipmap.pic1));
+        allItems.add(new ContactItems("Natalia", R.mipmap.pic1));
+        allItems.add(new ContactItems("Howard", R.mipmap.pic1));
+        allItems.add(new ContactItems("Shaq", R.mipmap.pic1));
+        allItems.add(new ContactItems("Kinoa", R.mipmap.pic1));
+        allItems.add(new ContactItems("Richard", R.mipmap.pic1));
+        allItems.add(new ContactItems("Roman", R.mipmap.pic1));
+        allItems.add(new ContactItems("Nick", R.mipmap.pic1));
+        allItems.add(new ContactItems("Sean", R.mipmap.pic1));
+        allItems.add(new ContactItems("Primo", R.mipmap.pic1));
+        allItems.add(new ContactItems("Elane", R.mipmap.pic1));
+        allItems.add(new ContactItems("Whitney", R.mipmap.pic1));
 
         return allItems;
     }
