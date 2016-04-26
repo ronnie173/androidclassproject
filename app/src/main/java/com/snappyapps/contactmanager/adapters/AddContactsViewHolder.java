@@ -1,4 +1,4 @@
-package com.snappyapps.contactmanager;
+package com.snappyapps.contactmanager.adapters;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.snappyapps.contactmanager.R;
 import com.snappyapps.contactmanager.activities.ShowContactActivity;
 
-public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class AddContactsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView userName;
     public TextView userAddress;
@@ -17,7 +18,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public TextView userPhoneNumber;
     public ImageView userPhoto;
 
-    public RecyclerViewHolders(View itemView) {
+    public AddContactsViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         userName = (TextView) itemView.findViewById(R.id.userName);

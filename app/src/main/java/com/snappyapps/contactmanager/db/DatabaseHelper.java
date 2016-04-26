@@ -30,17 +30,13 @@ public class DatabaseHelper  {
     }
 
     public void insertData(final String name, final String address, final String emailAddress,final String phoneNumber) {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                //create an object
-                Contacts contacts = database.createObject(Contacts.class);
-                contacts.setName(name);
-                contacts.setAddress(address);
-                contacts.setEmailAddress(emailAddress);
-                contacts.setPhoneNumber(phoneNumber);
-            }
-        });
+        realm.beginTransaction();
+        Contacts contacts = database.createObject(Contacts.class);
+        contacts.setName(name);
+        contacts.setAddress(address);
+        contacts.setEmailAddress(emailAddress);
+        contacts.setPhoneNumber(phoneNumber);
+        realm.commitTransaction();
 
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -53,7 +49,7 @@ public class DatabaseHelper  {
     {
         // Build the query looking at all users:
         RealmQuery<Contacts> query = realm.where(Contacts.class);
-        query.equalTo("name","Jerome");
+        query.equalTo("id",position);
         RealmResults<Contacts> results = query.findAll();
         for (int i = 0; i < results.size(); i++) {
             Contacts u = results.get(i);

@@ -8,27 +8,22 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Contacts extends RealmObject {
     @PrimaryKey
-    private int id;
-
+    private String id;
     private String name;
     private String address;
     private String phoneNumber;
     private String emailAddress;
     private String image;
 
-    public Contacts() {}
-
-
-    @Override
-    public void removeFromRealm() {
-        super.removeFromRealm();
+    public Contacts() {
     }
 
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
