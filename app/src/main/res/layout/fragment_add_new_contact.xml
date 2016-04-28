@@ -2,74 +2,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:showIn="@layout/activity_add_new_contact"
-    android:background="@color/colorPrimary">
+    tools:showIn="@layout/activity_add_new_contact">
 
 
     <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:ems="10"
-        android:id="@+id/nameEditText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="@color/white" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/emailEditText"
-        android:layout_below="@+id/nameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/nameEditText"
+        android:layout_below="@+id/nameEditText"
+        android:ems="10"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        />
+        android:textColorHint="@color/white" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
         android:id="@+id/phoneEditText"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/addressEditText"
-        android:hint="Phone Number"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
+        android:layout_alignStart="@+id/addressEditText"
+        android:layout_centerVertical="true"
         android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
         android:id="@+id/addressEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/phoneEditText"
         android:layout_alignStart="@+id/emailEditText"
         android:layout_marginBottom="26dp"
+        android:ems="10"
         android:hint="Address"
+        android:inputType="textMultiLine"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="@color/white" />
 
     <Button
+        android:id="@+id/addNewContactBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add New Contact"
-        android:id="@+id/addNewContactBtn"
         android:layout_below="@+id/phoneEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="78dp"
         android:background="@color/colorAccent"
-        android:textColor="@color/white"/>
+        android:text="Add New Contact"
+        android:textColor="@color/white" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/phoneEditText"
+        android:layout_below="@+id/phoneEditText"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/maleRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/femaleRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="60dp"/>
+    </RadioGroup>
+
 
 </RelativeLayout>

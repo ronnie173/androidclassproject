@@ -1,5 +1,7 @@
 package com.snappyapps.contactmanager.presenters.impl;
 
+import android.content.Intent;
+
 import com.snappyapps.contactmanager.activities.MainActivity;
 import com.snappyapps.contactmanager.models.Contacts;
 import com.snappyapps.contactmanager.presenters.IContactPresenter;
@@ -67,7 +69,12 @@ public class ContactsPresenter implements IContactPresenter {
         onSaveContactCallback = new IContactsRepository.OnSaveContactCallback() {
             @Override
             public void onSuccess() {
+                Intent intent = view.getIntent();
                 view.showMessage("Added");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                view.finish();
+                view.startActivity(view.getIntent());
+
             }
 
             @Override

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -20,62 +21,100 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toEndOf="@+id/photoImageView" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/photoImageView"
         android:src="@mipmap/pic4"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Jerome Raymond"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/imageView"
+        android:id="@+id/nameTv"
+        android:layout_below="@+id/photoImageView"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Phone #972-888-9000"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
+        android:id="@+id/phoneTv"
+        android:layout_below="@+id/nameTv"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Address 7688 somewhere dr"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/addressTv"
         android:lines="2"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_above="@+id/emailTxv"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Location"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
+        android:id="@+id/locationTxt"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <fragment
         android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_below="@+id/textView5"/>
+        android:layout_below="@+id/locationTxt"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp"
+        tools:context=".activities.ShowContactActivity"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/emailTxv"
+        android:layout_above="@+id/locationTxt"
+        android:layout_alignStart="@+id/addressTv"
+        android:layout_alignEnd="@+id/addressTv"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:layout_below="@+id/addressEditText"
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/callBtn"
+        android:src="@mipmap/phone"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_above="@+id/nameTv"
+        android:layout_toEndOf="@+id/nameTv" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailBtn"
+        android:src="@mipmap/gmail"
+        android:paddingRight="10dp"
+        android:layout_above="@+id/nameTv"
+        android:layout_toEndOf="@+id/photoImageView" />
 
 </RelativeLayout>

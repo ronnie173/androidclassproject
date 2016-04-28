@@ -1,6 +1,7 @@
 package com.snappyapps.contactmanager.activities;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,10 +22,12 @@ import com.snappyapps.contactmanager.dialogs.AddStudentDialog;
 import com.snappyapps.contactmanager.models.Contacts;
 import com.snappyapps.contactmanager.presenters.IContactPresenter;
 import com.snappyapps.contactmanager.presenters.impl.ContactsPresenter;
+import com.snappyapps.contactmanager.realm.RealmTable;
 
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private IContactPresenter presenter;
     ContactResultsAdapter adapter;
     RealmResults<Contacts> contacts;
@@ -41,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(toolbar);
         presenter = new ContactsPresenter(this);
-    //    id = getIntent().getStringExtra(RealmTable.ID);
         initializeRecyclerview();
 
 
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void showAddContactDialog() {
         final AddStudentDialog dialog = new AddStudentDialog();
         dialog.show(getSupportFragmentManager(), dialog.getClass().getName());
@@ -60,22 +63,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAddStudentClickListener(Contacts student) {
                 dialog.dismiss();
-//                presenter.addContactById(student, id);
-//                presenter.getAllContactsById(id);
                 presenter.addContact(student);
             }
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
         presenter.subscribeCallbacks();
-        //presenter.deleteContactByPosition(0);
         presenter.getAllContacts();
-
-//        presenter.getContactById(id);
-//        presenter.getAllContactsById(id);
-     //   presenter.deleteContactById(id);
 
     }
 
@@ -101,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                Toast.makeText(MainActivity.this, "You deleted " + contacts.get(viewHolder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 presenter.deleteContactById(contacts.get(viewHolder.getAdapterPosition()).getId());
                 adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
             }
@@ -110,24 +108,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void showContacts(RealmList<Contacts> contacts) {
-//        this.contacts = contacts;
-//        adapter = new AddContactsAdapter(contacts);
-//        recyclerView.setAdapter(adapter);
-//    }
-public void showResults(RealmResults<Contacts> contactscur) {
-    this.contacts = contactscur;
-    adapter = new ContactResultsAdapter(contactscur);
-//    adapter.setOnItemClickListener(new UniversityAdapter.OnItemClickListener() {
-//        @Override
-//        public void onItemClick(String id) {
-//            Intent intent = new Intent(getApplicationContext(), StudentsActivity.class);
-//            intent.putExtra(RealmTable.ID, id);
-//            startActivity(intent);
-//        }
-//    });
-    recyclerView.setAdapter(adapter);
-}
+    public void showResults(RealmResults<Contacts> contactscur) {
+        this.contacts = contactscur;
+        adapter = new ContactResultsAdapter(contactscur);
+        adapter.setOnItemClickListener(new ContactResultsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(String id) {
+                Intent intent = new Intent(getApplicationContext(), ShowContactActivity.class);
+                intent.putExtra(RealmTable.ID, id);
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -150,7 +143,8 @@ public void showResults(RealmResults<Contacts> contactscur) {
 
         return super.onOptionsItemSelected(item);
     }
-    public void showMessage(String message){
+
+    public void showMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
