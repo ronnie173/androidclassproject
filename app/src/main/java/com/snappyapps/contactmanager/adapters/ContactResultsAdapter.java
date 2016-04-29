@@ -19,6 +19,11 @@ public class ContactResultsAdapter extends RecyclerView.Adapter<ContactResultsAd
     private OnItemClickListener onItemClickListener;
     private RealmResults<Contacts> contacts;
 
+    /**
+     * Instantiates a new Contact results adapter.
+     *
+     * @param contacts the contacts
+     */
     public ContactResultsAdapter(RealmResults<Contacts> contacts) {
         this.contacts = contacts;
     }
@@ -41,10 +46,24 @@ public class ContactResultsAdapter extends RecyclerView.Adapter<ContactResultsAd
     }
 
 
+    /**
+     * The type Contact results view holder.
+     */
     public class ContactResultsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        /**
+         * The User name.
+         */
         public TextView userName;
+        /**
+         * The User photo.
+         */
         public ImageView userPhoto;
 
+        /**
+         * Instantiates a new Contact results view holder.
+         *
+         * @param itemView the item view
+         */
         public ContactResultsViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -60,10 +79,23 @@ public class ContactResultsAdapter extends RecyclerView.Adapter<ContactResultsAd
         }
     }
 
+    /**
+     * The interface On item click listener.
+     */
     public interface OnItemClickListener {
+        /**
+         * On item click.
+         *
+         * @param id the id
+         */
         void onItemClick(String id);
     }
 
+    /**
+     * Sets on item click listener.
+     *
+     * @param onItemClickListener the on item click listener
+     */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }

@@ -25,12 +25,26 @@ import com.snappyapps.contactmanager.presenters.impl.ContactsPresenter;
 import com.snappyapps.contactmanager.realm.RealmTable;
 
 import io.realm.RealmResults;
-
+/**
+ * Created by jeromeraymond on 4/11/16.
+ */
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private IContactPresenter presenter;
+    /**
+     * The Adapter.
+     */
     ContactResultsAdapter adapter;
+    /**
+     * The Contacts.
+     */
     RealmResults<Contacts> contacts;
+    /**
+     * The Recycler view.
+     */
     RecyclerView recyclerView;
     private String id;
     private GridLayoutManager gridLayoutManager;
@@ -56,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This shows the add contact dialog
+     */
     private void showAddContactDialog() {
         final AddStudentDialog dialog = new AddStudentDialog();
         dialog.show(getSupportFragmentManager(), dialog.getClass().getName());
@@ -68,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This gets all of the contacts to load
+     * when the application starts or when the view is started
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -76,18 +97,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This unsubscribes all callbacks
+     */
     @Override
     protected void onStop() {
         super.onStop();
         presenter.unsubscribeCallbacks();
     }
 
+    /**
+     * Initialize the recyclerview and swipe to delete
+     */
     private void initializeRecyclerview() {
         gridLayoutManager = new GridLayoutManager(MainActivity.this, 3);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        /**
+         * ItemTouchHelper to remove contact on swipe left or right
+         */
         ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -108,6 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Shows the results using realmresults
+     *
+     * @param contactscur the contactscur
+     */
     public void showResults(RealmResults<Contacts> contactscur) {
         this.contacts = contactscur;
         adapter = new ContactResultsAdapter(contactscur);
@@ -122,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -129,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -144,6 +189,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Helper to show toasts
+     *
+     * @param message the message
+     */
     public void showMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }

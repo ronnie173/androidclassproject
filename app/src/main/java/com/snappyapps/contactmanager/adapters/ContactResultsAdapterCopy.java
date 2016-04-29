@@ -20,6 +20,11 @@ public class ContactResultsAdapterCopy extends RecyclerView.Adapter<ContactResul
     private OnItemClickListener onItemClickListener;
     private RealmResults<Contacts> contacts;
 
+    /**
+     * Instantiates a new Contact results adapter copy.
+     *
+     * @param contacts the contacts
+     */
     public ContactResultsAdapterCopy(RealmResults<Contacts> contacts) {
         this.contacts = contacts;
     }
@@ -42,13 +47,36 @@ public class ContactResultsAdapterCopy extends RecyclerView.Adapter<ContactResul
     }
 
 
+    /**
+     * The type Contact results view holder.
+     */
     public class ContactResultsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        /**
+         * The User name.
+         */
         public TextView userName;
+        /**
+         * The User address.
+         */
         public TextView userAddress;
+        /**
+         * The User email address.
+         */
         public TextView userEmailAddress;
+        /**
+         * The User phone number.
+         */
         public TextView userPhoneNumber;
+        /**
+         * The User photo.
+         */
         public ImageView userPhoto;
 
+        /**
+         * Instantiates a new Contact results view holder.
+         *
+         * @param itemView the item view
+         */
         public ContactResultsViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -66,10 +94,23 @@ public class ContactResultsAdapterCopy extends RecyclerView.Adapter<ContactResul
         }
     }
 
+    /**
+     * The interface On item click listener.
+     */
     public interface OnItemClickListener {
+        /**
+         * On item click.
+         *
+         * @param id the id
+         */
         void onItemClick(String id);
     }
 
+    /**
+     * Sets on item click listener.
+     *
+     * @param onItemClickListener the on item click listener
+     */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }

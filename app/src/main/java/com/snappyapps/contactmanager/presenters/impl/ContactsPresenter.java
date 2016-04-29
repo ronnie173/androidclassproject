@@ -24,46 +24,82 @@ public class ContactsPresenter implements IContactPresenter {
     private IContactsRepository.OnGetContactsCallback onGetContactsCallback;
     private IContactsRepository contactsRepository;
 
+    /**
+     * Instantiates a new Contacts presenter.
+     *
+     * @param view the view
+     */
     public ContactsPresenter(MainActivity view) {
         this.view = view;
         contactsRepository = new ContactsRepository();
     }
 
+    /**
+     *
+     * @param contacts
+     */
     @Override
     public void addContact(Contacts contacts) {
         contactsRepository.addContact(contacts, onSaveContactCallback);
     }
 
+    /**
+     *
+     * @param contact
+     * @param contactId
+     */
     @Override
     public void addContactById(Contacts contact, String contactId) {
         contactsRepository.addContactById(contact, contactId, onSaveContactCallback);
     }
 
+    /**
+     *
+     * @param position
+     */
     @Override
     public void deleteContactByPosition(int position) {
         contactsRepository.deleteContactByPosition(position, onDeleteContactCallback);
     }
 
+    /**
+     *
+     * @param ContactId
+     */
     @Override
     public void deleteContactById(String ContactId) {
         contactsRepository.deleteContactById(ContactId, onDeleteContactCallback);
     }
 
+    /**
+     *
+     */
     @Override
     public void getAllContacts() {
         contactsRepository.getAllContacts(onGetAllContactsCallback);
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void getAllContactsById(String id) {
 
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void getContactById(String id) {
 
     }
 
+    /**
+     * Subscribes to all of the callbacks and passed no animation flag
+     */
     @Override
     public void subscribeCallbacks() {
         onSaveContactCallback = new IContactsRepository.OnSaveContactCallback() {
@@ -145,6 +181,9 @@ public class ContactsPresenter implements IContactPresenter {
 
     }
 
+    /**
+     * Unsubscribes from callbacks
+     */
     @Override
     public void unsubscribeCallbacks() {
         onDeleteContactCallback = null;

@@ -14,6 +14,14 @@ import com.snappyapps.contactmanager.realm.RealmTable;
 
 import io.realm.Realm;
 
+/**
+ * Created by jeromeraymond on 4/11/16.
+ */
+/**
+ * EditContactActivity
+ * This class is the activity that edits a contact
+ */
+
 public class EditContactActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button editContactBtn;
@@ -42,7 +50,10 @@ public class EditContactActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-
+    /**
+     *
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -55,6 +66,9 @@ public class EditContactActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * Initializes all of the gui components ans sets listeners
+     */
     private void initializeComponents() {
         editContactBtn = (Button) findViewById(R.id.editContactBtn);
         nameEditText = (EditText) findViewById(R.id.nameEditText);
@@ -65,6 +79,11 @@ public class EditContactActivity extends AppCompatActivity implements View.OnCli
         editContactBtn.setOnClickListener(this);
     }
 
+    /**
+     * Gets the contact from the realm database and returns a contact that was first
+     * @param id
+     * @return
+     */
     private Contacts getContact(String id) {
 
         realm.beginTransaction();
@@ -74,6 +93,11 @@ public class EditContactActivity extends AppCompatActivity implements View.OnCli
         return contact;
     }
 
+    /**
+     * This updates a contact in the realm database.
+     * @param realm
+     * @param contact
+     */
     public void updateContact(Realm realm, Contacts contact) {
         Contacts toEdit = realm.where(Contacts.class)
                 .equalTo(RealmTable.ID, contact.getId()).findFirst();

@@ -5,7 +5,6 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,17 +24,30 @@ import java.util.List;
 import java.util.Locale;
 
 import io.realm.Realm;
+/**
+ * Created by jeromeraymond on 4/11/16.
+ */
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ShowContactActivityFragment extends Fragment implements OnMapReadyCallback {
+    /**
+     * The Bundle.
+     */
     Bundle bundle;
     private Contacts contact;
 
+    /**
+     * Instantiates a new Show contact activity fragment.
+     */
     public ShowContactActivityFragment() {
     }
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +58,13 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
         }
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +72,11 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
         return inflater.inflate(R.layout.fragment_show_contact, container, false);
     }
 
+    /**
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -61,6 +85,10 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
         mapFragment.getMapAsync(this);
     }
 
+    /**
+     *
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -84,6 +112,11 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     private Contacts getContact(String id) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();

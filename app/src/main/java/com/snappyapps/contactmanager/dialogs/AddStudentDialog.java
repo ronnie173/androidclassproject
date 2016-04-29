@@ -58,6 +58,11 @@ public class AddStudentDialog extends DialogFragment implements View.OnClickList
                 !addressEditText.getText().toString().isEmpty();
     }
 
+    /**
+     * Sets listener.
+     *
+     * @param listener the listener
+     */
     public void setListener(OnAddContactsClickListener listener) {
         this.listener = listener;
     }
@@ -79,7 +84,15 @@ public class AddStudentDialog extends DialogFragment implements View.OnClickList
         }
     }
 
+    /**
+     * The interface On add contacts click listener.
+     */
     public interface OnAddContactsClickListener {
+        /**
+         * On add student click listener.
+         *
+         * @param student the student
+         */
         void onAddStudentClickListener(Contacts student);
     }
 

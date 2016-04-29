@@ -20,17 +20,46 @@ import com.snappyapps.contactmanager.models.Contacts;
 import com.snappyapps.contactmanager.realm.RealmTable;
 
 import io.realm.Realm;
-
+/**
+ * Created by jeromeraymond on 4/11/16.
+ */
+/**
+ * The type Show contact activity.
+ */
 public class ShowContactActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = ShowContactActivity.class.getSimpleName();
+    /**
+     * The Photo image view.
+     */
     ImageView photoImageView;
+    /**
+     * The Name tv.
+     */
     TextView nameTv;
+    /**
+     * The Phone number tv.
+     */
     TextView phoneNumberTv;
+    /**
+     * The Address tv.
+     */
     TextView addressTv;
+    /**
+     * The Email address.
+     */
     TextView emailAddress;
+    /**
+     * The Phone call btn.
+     */
     ImageButton phoneCallBtn;
+    /**
+     * The Mail btn.
+     */
     ImageButton mailBtn;
+    /**
+     * The Contact.
+     */
     Contacts contact;
 
     @Override

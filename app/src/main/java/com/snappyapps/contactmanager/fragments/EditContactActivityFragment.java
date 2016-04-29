@@ -7,12 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.snappyapps.contactmanager.R;
+/**
+ * Created by jeromeraymond on 4/11/16.
+ */
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class EditContactActivityFragment extends Fragment {
 
+    /**
+     * Instantiates a new Edit contact activity fragment.
+     */
     public EditContactActivityFragment() {
     }
 

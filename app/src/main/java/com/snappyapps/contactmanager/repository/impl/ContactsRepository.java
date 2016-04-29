@@ -17,7 +17,11 @@ import io.realm.RealmResults;
  * Created by jeromeraymond on 4/25/16.
  */
 public class ContactsRepository implements IContactsRepository {
-
+    /**
+     * Adds the contacts to the database
+     * @param contacts
+     * @param callback
+     */
     @Override
     public void addContact(Contacts contacts, OnSaveContactCallback callback) {
         Realm realm = getRealm();
@@ -33,6 +37,10 @@ public class ContactsRepository implements IContactsRepository {
             callback.onSuccess();
     }
 
+    /**
+     * Gets a default instance of the realm database
+     * @return
+     */
     @NonNull
     private Realm getRealm() {
         Realm realm = Realm.getDefaultInstance();
@@ -40,6 +48,12 @@ public class ContactsRepository implements IContactsRepository {
         return realm;
     }
 
+    /**
+     * Adds the contact to the database by id
+     * @param contacts
+     * @param id
+     * @param callback
+     */
     @Override
     public void addContactById(Contacts contacts, String id, OnSaveContactCallback callback) {
         Realm realm = getRealm();
@@ -58,6 +72,11 @@ public class ContactsRepository implements IContactsRepository {
 
     }
 
+    /**
+     * Deletes the contact by id
+     * @param id
+     * @param callback
+     */
     @Override
     public void deleteContactById(String id, OnDeleteContactCallback callback) {
         Realm realm = getRealm();
@@ -66,6 +85,11 @@ public class ContactsRepository implements IContactsRepository {
         realm.commitTransaction();
     }
 
+    /**
+     * Deletes the contact by position
+     * @param position
+     * @param callback
+     */
     @Override
     public void deleteContactByPosition(int position, OnDeleteContactCallback callback) {
         Realm realm = getRealm();
@@ -78,6 +102,10 @@ public class ContactsRepository implements IContactsRepository {
             callback.onSuccess();
     }
 
+    /**
+     * Gets all contacts from the database
+     * @param callback
+     */
     @Override
     public void getAllContacts(OnGetAllContactsCallback callback) {
         Realm realm = Realm.getInstance(ApplicationHelper.getInstance());
