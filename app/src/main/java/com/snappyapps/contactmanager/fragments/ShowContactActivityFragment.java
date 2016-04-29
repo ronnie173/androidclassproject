@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,7 +46,6 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
     }
 
     /**
-     *
      * @param savedInstanceState
      */
     @Override
@@ -59,7 +59,6 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
     }
 
     /**
-     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -73,7 +72,6 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
     }
 
     /**
-     *
      * @param view
      * @param savedInstanceState
      */
@@ -86,7 +84,6 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
     }
 
     /**
-     *
      * @param googleMap
      */
     @Override
@@ -97,10 +94,15 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
         double lng = 0;
         try {
             List<Address> list = geocoder.getFromLocationName(contact.getAddress(), 1);
-            Address address = list.get(0);
+            try {
+                Address address = list.get(0);
+                lat = address.getLatitude();
+                lng = address.getLongitude();
+            } catch (Exception e) {
+                showMessage("Please add a real address");
+                return;
+            }
 
-            lat = address.getLatitude();
-            lng = address.getLongitude();
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
             googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title(contact.getName() + "'s Location"));
@@ -113,7 +115,6 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
     }
 
     /**
-     *
      * @param id
      * @return
      */
@@ -126,5 +127,13 @@ public class ShowContactActivityFragment extends Fragment implements OnMapReadyC
         return contact;
     }
 
+    /**
+     * Helper to show toasts
+     *
+     * @param message the message
+     */
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
 
 }

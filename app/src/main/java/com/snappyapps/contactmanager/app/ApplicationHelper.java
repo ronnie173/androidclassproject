@@ -12,21 +12,19 @@ import io.realm.RealmConfiguration;
  */
 public class ApplicationHelper extends Application {
     private static ApplicationHelper instance;
-    RealmConfiguration config;
+    public static RealmConfiguration config;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        try {
-           config  = new RealmConfiguration
-                    .Builder(getApplicationContext())
-                    .setModules(new SimpleRealmModule()).build();
-            Realm.setDefaultConfiguration(config);
-        }catch (Exception e){
-            Realm.deleteRealm(config);
-        }
 
-      //
+        config = new RealmConfiguration
+                .Builder(getApplicationContext()).deleteRealmIfMigrationNeeded()
+                .setModules(new SimpleRealmModule()).build();
+        Realm.setDefaultConfiguration(config);
+
+
     }
 
     /**
@@ -34,8 +32,11 @@ public class ApplicationHelper extends Application {
      *
      * @return the instance
      */
-    public static ApplicationHelper getInstance()
-   {
-       return instance;
-   }
+    public static ApplicationHelper getInstance() {
+        return instance;
+    }
+    public static RealmConfiguration realmConfig()
+    {
+        return config;
+    }
 }

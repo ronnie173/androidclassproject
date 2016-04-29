@@ -2,7 +2,6 @@ package com.snappyapps.contactmanager.repository.impl;
 
 import android.support.annotation.NonNull;
 
-import com.snappyapps.contactmanager.app.ApplicationHelper;
 import com.snappyapps.contactmanager.models.Contacts;
 import com.snappyapps.contactmanager.realm.RealmTable;
 import com.snappyapps.contactmanager.repository.IContactsRepository;
@@ -108,7 +107,7 @@ public class ContactsRepository implements IContactsRepository {
      */
     @Override
     public void getAllContacts(OnGetAllContactsCallback callback) {
-        Realm realm = Realm.getInstance(ApplicationHelper.getInstance());
+        Realm realm = Realm.getDefaultInstance();
         RealmQuery<Contacts> query = realm.where(Contacts.class);
         RealmResults<Contacts> results = query.findAll();
 
